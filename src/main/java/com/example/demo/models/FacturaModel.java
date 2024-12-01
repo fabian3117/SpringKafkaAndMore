@@ -14,7 +14,7 @@ import java.sql.Date;
 @Table
 @AllArgsConstructor
 @NoArgsConstructor
-public class factura {
+public class FacturaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

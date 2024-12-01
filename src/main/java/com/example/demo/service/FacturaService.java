@@ -1,7 +1,7 @@
 package com.example.demo.service;
 
-import com.example.demo.dto.FacturacionDTO;
-import com.example.demo.models.factura;
+import com.example.demo.dto.FacturaDTO;
+import com.example.demo.models.FacturaModel;
 import com.example.demo.repository.facturaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,26 +14,31 @@ import java.util.List;
 public class FacturaService {
 
     private final facturaRepository facturaRepository;
+    private final FacturacionMapper facturacionMapper;
 
-    public void saveNewFactura(factura factura) {
+    public void saveNewFactura(FacturaModel FacturaModel) {
 
         //--->  En caso de falla debo informar via kafka    <---
 
-        facturaRepository.save(factura);
+        facturaRepository.save(FacturaModel);
 
     }
-    public void saveNewFactura(FacturacionDTO factura){
+    public void saveNewFactura(FacturaDTO factura){
 
-        facturaRepository.save(com.example.demo.models.factura.builder()
+        facturaRepository.save(FacturaModel.builder()
                 .facturaId(factura.getFacturaId())
                 .monto(factura.getMonto())
                         .fecha(factura.getFecha())
                 .build());
     }
-    public factura getFacturaById(Long id) {
+    public FacturaModel getFacturaById(Long id) {
+
+        facturacionMapper.
         return facturaRepository.getReferenceById(id);
+
+
     }
-    public List<factura> getAllFacturas() {
+    public List<FacturaModel> getAllFacturas() {
         return facturaRepository.findAll();
 
     }

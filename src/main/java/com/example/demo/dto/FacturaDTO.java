@@ -9,7 +9,7 @@ import java.sql.Date;
 
 @Data
 
-public class FacturacionDTO {
+public class FacturaDTO {
 
     private Date fecha;
 

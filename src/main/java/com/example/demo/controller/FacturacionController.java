@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.FacturacionDTO;
-import com.example.demo.models.factura;
+import com.example.demo.dto.FacturaDTO;
+import com.example.demo.models.FacturaModel;
 import com.example.demo.service.FacturaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -16,22 +16,19 @@ public class FacturacionController {
     private final FacturaService facturaService;
 
     @GetMapping("/{userId}")
-    public FacturacionDTO getFacturacion(@PathVariable String userId) {
+    public FacturaDTO getFacturacion(@PathVariable Long userId) {
 
-        return FacturacionDTO.builder()
-                .monto(500L)
-                .fecha(new Date(System.currentTimeMillis()))
-                .facturaId(50L)
-                .build();
+        return facturaService.getFacturaById(userId);
+
     }
     @GetMapping("/")
-    public List<factura> getAllFacturas(){
+    public List<FacturaModel> getAllFacturas(){
         return facturaService.getAllFacturas();
     }
     @PostMapping("/{userId}")
-    public void createFacturacion(@PathVariable String userId, @RequestBody FacturacionDTO facturacionDTO) {
+    public void createFacturacion(@PathVariable String userId, @RequestBody FacturaDTO facturaDTO) {
 
-        facturaService.saveNewFactura(factura.builder().facturaId(2l).monto(10l).build());
+        facturaService.saveNewFactura(FacturaModel.builder().facturaId(2l).monto(10l).build());
         return;
     }
 }

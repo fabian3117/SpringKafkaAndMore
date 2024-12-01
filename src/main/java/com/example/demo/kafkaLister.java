@@ -1,7 +1,7 @@
 package com.example.demo;
 
 import com.example.demo.controller.FacturacionController;
-import com.example.demo.dto.FacturacionDTO;
+import com.example.demo.dto.FacturaDTO;
 import com.example.demo.service.FacturaService;
 import com.example.demo.utils.Utils;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +23,7 @@ public class kafkaLister {
     @KafkaListener(topics = Utils.ValueTopic, groupId = "group1")
     void listener(String data) {
         //--->  Disparador de evento ante recepcion de mensaje  <---
-        FacturacionDTO factura=FacturacionDTO.builder()
+        FacturaDTO factura= FacturaDTO.builder()
                 .fecha(new Date(System.currentTimeMillis()))
                 .monto(10L)
                 .facturaId(Long.valueOf(data)).build();
