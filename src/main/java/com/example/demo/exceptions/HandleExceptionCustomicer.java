@@ -20,7 +20,8 @@ public class HandleExceptionCustomicer {
         logger.error(e.getMessage());
 
         kafkaProducterSender.send(topicErrorF,e.getMessage());
-        kafkaProducterSender.send(topicErrorF,"Data "+System.currentTimeMillis());
+
+       // kafkaProducterSender.send(topicErrorF,"Data "+System.currentTimeMillis());
 
     }
 

@@ -13,7 +13,7 @@ import java.sql.Date;
 
 @Component
 @Slf4j
-public class kafkaLister {
+public class kafkaLister  {
 
     @Autowired
     private FacturacionController facturacionController;
@@ -33,4 +33,5 @@ facturaService.saveNewFactura(factura);
 
         log.info("Received message [{}] in group1", data);
     }
+
 }
