@@ -7,7 +7,7 @@ COPY src src
 COPY build.gradle gradlew gradlew.bat ./
 COPY gradle ./
 #
-#RUN apt-get update && apt-get install -y gradle
+RUN apt-get update && apt-get install -y gradle
 #RUN gradlew clean build
 #RUN ./gradlew wrapper
 #RUN ./gradlew clean build
