@@ -25,6 +25,22 @@ repositories {
     mavenCentral()
 }
 
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.21.12' // Ajusta la versión según sea necesario
+    }
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+
+            }
+        }
+    }
+    generatedFilesBaseDir = "$projectDir/src/generated/java"
+}
+
+sourceSets.main.java.srcDir new File(buildDir,'generated/source')
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.kafka:spring-kafka'
@@ -54,18 +70,4 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
-}
-
-protobuf {
-    protoc {
-        artifact = 'com.google.protobuf:protoc:3.21.12' // Ajusta la versión según sea necesario
-    }
-    generateProtoTasks {
-        all().each { task ->
-            task.builtins {
-
-            }
-        }
-    }
-    generatedFilesBaseDir = "$projectDir/src/generated/java"
 }
